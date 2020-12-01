@@ -12,7 +12,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="Main Menu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Main Menu"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -25,7 +32,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="New Game" type="Button" parent="GridContainer"]
+[node name="New Game" type="Button" parent="Main Menu/GridContainer"]
 margin_right = 87.0
 margin_bottom = 20.0
 text = "New Game"
@@ -33,7 +40,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="Button" parent="GridContainer"]
+[node name="Options" type="Button" parent="Main Menu/GridContainer"]
 margin_top = 24.0
 margin_right = 87.0
 margin_bottom = 44.0
@@ -42,7 +49,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Help" type="Button" parent="GridContainer"]
+[node name="Help" type="Button" parent="Main Menu/GridContainer"]
 margin_top = 48.0
 margin_right = 87.0
 margin_bottom = 68.0
@@ -51,7 +58,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" type="Button" parent="GridContainer"]
+[node name="Quit" type="Button" parent="Main Menu/GridContainer"]
 margin_top = 72.0
 margin_right = 87.0
 margin_bottom = 92.0
@@ -59,4 +66,53 @@ text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="GridContainer/Quit" to="." method="quit"]
+
+[node name="Options" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Help" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GridContainer" type="GridContainer" parent="Help"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -211.5
+margin_top = -78.5
+margin_right = 211.5
+margin_bottom = 78.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Help/GridContainer"]
+margin_right = 423.0
+margin_bottom = 133.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Use WASD to move around. Click on the lights to turn them on or off.
+
+In the top left, the number of floors and remaining lights is shown. You'll have to find the lights yourself.
+
+Your time is shown in the bottom left."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="Help/GridContainer"]
+margin_top = 137.0
+margin_right = 423.0
+margin_bottom = 157.0
+text = "Back"
+[connection signal="pressed" from="Main Menu/GridContainer/Options" to="." method="showOptions"]
+[connection signal="pressed" from="Main Menu/GridContainer/Help" to="." method="showHelp"]
+[connection signal="pressed" from="Main Menu/GridContainer/Quit" to="." method="quit"]
+[connection signal="pressed" from="Help/GridContainer/Back" to="." method="backToMain"]
