@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/player.gd" type="Script" id=1]
+
+[sub_resource type="ProceduralSky" id=3]
+
+[sub_resource type="Environment" id=1]
+background_sky = SubResource( 3 )
+
+[sub_resource type="CylinderShape" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="UI"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -24.0
+text = "Time: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Element Counters" type="GridContainer" parent="UI"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Floors" type="Label" parent="UI/Element Counters"]
+margin_right = 55.0
+margin_bottom = 14.0
+text = "Floors: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lights" type="Label" parent="UI/Element Counters"]
+margin_top = 18.0
+margin_right = 55.0
+margin_bottom = 32.0
+text = "Lights: 0"
+
+[node name="Player" type="KinematicBody" parent="."]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
+shape = SubResource( 2 )
+
+[node name="Head" type="Spatial" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.648447, 0 )
+
+[node name="Camera" type="Camera" parent="Player/Head"]
+
+[node name="RayCast" type="RayCast" parent="Player/Head"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+enabled = true

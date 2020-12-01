@@ -112,6 +112,7 @@ margin_top = 137.0
 margin_right = 423.0
 margin_bottom = 157.0
 text = "Back"
+[connection signal="pressed" from="Main Menu/GridContainer/New Game" to="." method="startGame"]
 [connection signal="pressed" from="Main Menu/GridContainer/Options" to="." method="showOptions"]
 [connection signal="pressed" from="Main Menu/GridContainer/Help" to="." method="showHelp"]
 [connection signal="pressed" from="Main Menu/GridContainer/Quit" to="." method="quit"]

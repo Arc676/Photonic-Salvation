@@ -7,10 +7,6 @@ onready var main = $"Main Menu"
 onready var options = $Options
 onready var help = $Help
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 func quit():
 	tree.quit()
 
@@ -30,3 +26,6 @@ func showOptions():
 func backToMain():
 	hideScreens()
 	main.visible = true
+
+func startGame():
+	tree.change_scene("res://Scenes/Game.tscn")
