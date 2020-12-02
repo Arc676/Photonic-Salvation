@@ -7,6 +7,7 @@ onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 onready var head = $Head
 onready var raycast = $Head/RayCast
+onready var flashlight = $Head/SpotLight
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -17,15 +18,18 @@ func _process(_delta):
 	transform.basis = Basis(Vector3(0, _mouse_motion.x * -0.001, 0))
 	head.transform.basis = Basis(Vector3(_mouse_motion.y * -0.001, 0, 0))
 
-	if raycast.is_colliding():
+	if Input.is_action_just_released("flashlight"):
+		flashlight.visible = !flashlight.visible
+
+	if raycast.is_colliding() and Input.is_action_just_released("toggle"):
 		pass
 
 func _physics_process(delta):
 	# Keyboard movement.
 	var movement = transform.basis.xform(Vector3(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		0,
-		Input.get_action_strength("move_back") - Input.get_action_strength("move_forward")
+		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	).normalized())
 
 	# Gravity.
