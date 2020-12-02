@@ -24,6 +24,10 @@ config/name="Photonic Salvation"
 run/main_scene="res://Scenes/Main Menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Settings="*res://Scripts/settings.gd"
+
 [input]
 
 ui_accept={
