@@ -30,7 +30,7 @@ func _physics_process(delta):
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		0,
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	).normalized())
+	).normalized() * 5)
 
 	# Gravity.
 	velocity.y -= gravity * delta

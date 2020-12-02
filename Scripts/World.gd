@@ -21,15 +21,29 @@ func _ready():
 	floorCount = rng.randi_range(1, 6)
 	bedFloor = rng.randi_range(1, floorCount)
 
+	rng.randomize()
+
 	lightCounts.clear()
 	totalLights = 0
 
+	var size = Vector3(Settings.maxWidth, 1, Settings.maxLength)
+
 	for i in range(floorCount):
+		var floorHeight = i * FLOOR_HEIGHT
 		var newFloor = floorObj.instance()
-		newFloor.translate(Vector3(0, i * FLOOR_HEIGHT, 0))
+		newFloor.translate(Vector3(0, floorHeight, 0))
+		newFloor.scale = size
 		add_child(newFloor)
 		var lights = rng.randi_range(1, 6)
 		lightCounts.append(lights)
 		totalLights += lights
+		for _j in range(lights):
+			var newLight = lightObj.instance()
+			newLight.translate(Vector3(
+				rng.randi_range(-size.x / 2, size.x / 2),
+				floorHeight,
+				rng.randi_range(-size.z / 2, size.z / 2)
+			))
+			add_child(newLight)
 	floorLbl.text = "Floors: %d" % floorCount
 	lightsLbl.text = "Lights: %d" % totalLights
