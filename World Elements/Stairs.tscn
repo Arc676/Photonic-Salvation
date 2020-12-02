@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://OBJ/Stairs.obj" type="ArrayMesh" id=1]
+
+[sub_resource type="ConvexPolygonShape" id=1]
+points = PoolVector3Array( 3, 0, 3, -3, 0, 3, 3, 6, -3, 3, 0, -3, -3, 6, -3, -3, 0, -3 )
+
+[node name="Stairs" type="StaticBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="CSGMesh" type="CSGMesh" parent="."]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 1, 0 )
+mesh = ExtResource( 1 )
