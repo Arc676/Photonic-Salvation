@@ -18,10 +18,10 @@ var totalLights
 var rng = RandomNumberGenerator.new()
 
 func _ready():
+	rng.randomize()
+
 	floorCount = rng.randi_range(1, 6)
 	bedFloor = rng.randi_range(1, floorCount)
-
-	rng.randomize()
 
 	lightCounts.clear()
 	totalLights = 0

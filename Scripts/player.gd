@@ -22,7 +22,7 @@ func _process(_delta):
 		flashlight.visible = !flashlight.visible
 
 	if raycast.is_colliding() and Input.is_action_just_released("toggle"):
-		pass
+		raycast.get_collider().toggle()
 
 func _physics_process(delta):
 	# Keyboard movement.
