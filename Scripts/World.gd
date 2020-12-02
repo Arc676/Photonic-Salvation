@@ -8,6 +8,7 @@ onready var lightsLbl = $"UI/Element Counters/Lights"
 
 var floorObj = preload("res://World Elements/Floor.tscn")
 var stairsObj = preload("res://World Elements/Stairs.tscn")
+var lightObj = preload("res://World Elements/Light.tscn")
 
 var bedFloor = 0
 var floorCount = 0
