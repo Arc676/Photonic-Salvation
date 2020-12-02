@@ -29,11 +29,14 @@ func _ready():
 	var size = Vector3(Settings.maxWidth, 1, Settings.maxLength)
 
 	for i in range(floorCount):
+		# Floor
 		var floorHeight = i * FLOOR_HEIGHT
 		var newFloor = floorObj.instance()
 		newFloor.translate(Vector3(0, floorHeight, 0))
 		newFloor.scale = size
 		add_child(newFloor)
+
+		# Lights
 		var lights = rng.randi_range(1, 6)
 		lightCounts.append(lights)
 		totalLights += lights
@@ -45,5 +48,13 @@ func _ready():
 				rng.randi_range(-size.z / 2, size.z / 2)
 			))
 			add_child(newLight)
+
+		# Stairs
+		if i + 1 < floorCount:
+			#var side = rng.randi_range(1, 4)
+			var pos = Vector3(-size.x / 2 - 15, floorHeight, (i % 2) * 10)
+			var stairs = stairsObj.instance()
+			stairs.translate(pos)
+			add_child(stairs)
 	floorLbl.text = "Floors: %d" % floorCount
 	lightsLbl.text = "Lights: %d" % totalLights
