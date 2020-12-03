@@ -12,8 +12,9 @@ var lightObj = preload("res://World Elements/Light.tscn")
 
 var bedFloor = 0
 var floorCount = 0
-var lightCounts = []
-var totalLights
+var lightCount = 0
+
+var deactivatedLights = 0
 
 var rng = RandomNumberGenerator.new()
 
@@ -22,9 +23,9 @@ func _ready():
 
 	floorCount = rng.randi_range(1, 6)
 	bedFloor = rng.randi_range(1, floorCount)
+	lightCount = 0
 
-	lightCounts.clear()
-	totalLights = 0
+	deactivatedLights = 0
 
 	var size = Vector3(Settings.maxWidth, 1, Settings.maxLength)
 
@@ -38,8 +39,7 @@ func _ready():
 
 		# Lights
 		var lights = rng.randi_range(1, 6)
-		lightCounts.append(lights)
-		totalLights += lights
+		lightCount += lights
 		for _j in range(lights):
 			var newLight = lightObj.instance()
 			newLight.translate(Vector3(
@@ -57,4 +57,8 @@ func _ready():
 			stairs.translate(pos)
 			add_child(stairs)
 	floorLbl.text = "Floors: %d" % floorCount
-	lightsLbl.text = "Lights: %d" % totalLights
+	lightsLbl.text = "Lights: 0/%d" % lightCount
+
+func foundLight(delta):
+	deactivatedLights += delta
+	lightsLbl.text = "Lights: %d/%d" % [deactivatedLights, lightCount]

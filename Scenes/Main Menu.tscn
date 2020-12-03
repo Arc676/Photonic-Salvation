@@ -191,9 +191,9 @@ margin_right = 423.0
 margin_bottom = 133.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Use WASD to move around. Click on the lights to turn them on or off.
+text = "Use WASD to move around. Click on the lights to turn them on or off. Press spacebar to toggle your flashlight.
 
-In the top left, the number of floors and remaining lights is shown. You'll have to find the lights yourself.
+In the top left, the number of floors and remaining lights is shown. You'll have to find the lights yourself. The location of the stairs is marked by a green light.
 
 Your time is shown in the bottom left."
 __meta__ = {
