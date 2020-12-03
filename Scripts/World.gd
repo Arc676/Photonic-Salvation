@@ -2,6 +2,7 @@ class_name GameWorld
 extends Spatial
 
 const FLOOR_HEIGHT = 3
+const ROTATION_ANGLES = [0, -PI / 2, PI, PI / 2]
 
 onready var player = $Player
 
@@ -25,7 +26,7 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	rng.randomize()
 
-	floorCount = rng.randi_range(1, 6)
+	floorCount = rng.randi_range(1, Settings.maxFloors)
 	bedFloor = rng.randi_range(0, floorCount - 1)
 	lightCount = 0
 
@@ -43,6 +44,8 @@ func _ready():
 	add_child(bed)
 	player.translate(bedpos + Vector3(0, 1, 3))
 
+	var stairSide = 0
+
 	for i in range(floorCount):
 		# Floor
 		var floorHeight = i * FLOOR_HEIGHT
@@ -52,7 +55,7 @@ func _ready():
 		add_child(newFloor)
 
 		# Lights
-		var lights = rng.randi_range(1, 6)
+		var lights = rng.randi_range(1, Settings.maxLights)
 		lightCount += lights
 		for _j in range(lights):
 			var newLight = lightObj.instance()
@@ -65,10 +68,21 @@ func _ready():
 
 		# Stairs
 		if i + 1 < floorCount:
-			#var side = rng.randi_range(1, 4)
-			var pos = Vector3(-size.x - 3.5, floorHeight, (i % 2) * 10)
+			if i == 0:
+				stairSide = rng.randi_range(0, 3)
+			else:
+				var newSide = rng.randi_range(0, 2)
+				if newSide == stairSide:
+					newSide = 3
+				stairSide = newSide
+			var trsf = Transform.IDENTITY \
+						.rotated(Vector3.UP, ROTATION_ANGLES[stairSide]) \
+						.translated(Vector3(
+							-(size.x if stairSide % 2 == 0 else size.z) - 3.5,
+							floorHeight, 0
+						))
 			var stairs = stairsObj.instance()
-			stairs.translate(pos)
+			stairs.transform = trsf
 			add_child(stairs)
 	floorLbl.text = "Floors: %d" % floorCount
 	lightsLbl.text = "Lights: 0/%d" % lightCount
