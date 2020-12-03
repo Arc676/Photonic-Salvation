@@ -17,6 +17,7 @@ var bedFloor = 0
 var floorCount = 0
 var lightCount = 0
 
+var bed = null
 var deactivatedLights = 0
 
 var rng = RandomNumberGenerator.new()
@@ -37,10 +38,10 @@ func _ready():
 		bedFloor * FLOOR_HEIGHT,
 		rng.randi_range(-size.z / 2, size.z / 2)
 	)
-	var bed = bedObj.instance()
+	bed = bedObj.instance()
 	bed.translate(bedpos)
 	add_child(bed)
-	player.translate(bedpos + Vector3(0, 0, 3))
+	player.translate(bedpos + Vector3(0, 1, 3))
 
 	for i in range(floorCount):
 		# Floor
@@ -75,3 +76,4 @@ func _ready():
 func foundLight(delta):
 	deactivatedLights += delta
 	lightsLbl.text = "Lights: %d/%d" % [deactivatedLights, lightCount]
+	bed.setUsable(deactivatedLights == lightCount)

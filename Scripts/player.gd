@@ -6,7 +6,8 @@ var _mouse_motion = Vector2()
 onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 onready var head = $Head
-onready var raycast = $Head/RayCast
+onready var lightcast = $"Head/Light Raycast"
+onready var bedcast = $"Head/Bed Raycast"
 onready var flashlight = $Head/SpotLight
 
 onready var timeLbl = $Control/Time
@@ -38,8 +39,11 @@ func _process(delta):
 	if Input.is_action_just_released("flashlight"):
 		flashlight.visible = !flashlight.visible
 
-	if raycast.is_colliding() and Input.is_action_just_released("toggle"):
-		raycast.get_collider().toggle()
+	if Input.is_action_just_released("toggle"):
+		if lightcast.is_colliding():
+			lightcast.get_collider().toggle()
+		elif bedcast.is_colliding():
+			gameStarted = false
 
 func _physics_process(delta):
 	var movement = transform.basis.xform(Vector3(

@@ -60,10 +60,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.648447, 0 )
 
 [node name="Camera" type="Camera" parent="Player/Head"]
 
-[node name="RayCast" type="RayCast" parent="Player/Head"]
+[node name="Light Raycast" type="RayCast" parent="Player/Head"]
 transform = Transform( 1, 0, 0, 0, -1.09278e-07, -1, 0, 2.5, -4.37114e-08, 0, 0, 0 )
 enabled = true
 collision_mask = 2
+
+[node name="Bed Raycast" type="RayCast" parent="Player/Head"]
+transform = Transform( 1, 0, 0, 0, -1.09278e-07, -1, 0, 2.5, -4.37114e-08, 0, 0, 0 )
+enabled = true
+collision_mask = 4
 
 [node name="SpotLight" type="SpotLight" parent="Player/Head"]
 
