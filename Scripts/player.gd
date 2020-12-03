@@ -22,6 +22,7 @@ func _ready():
 func _process(delta):
 	if !gameStarted and Input.is_action_just_released("flashlight"):
 		gameStarted = true
+		return
 
 	if gameStarted:
 		gameTime += delta

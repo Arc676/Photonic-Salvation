@@ -50,7 +50,7 @@ func startGame():
 # Change settings
 
 func floorsChanged(value):
-	maxFloors.text = "Maximum number of floors: %d" % value
+	maxFloors.text = "Maximum number of floors: %02d" % value
 	Settings.maxFloors = int(value)
 
 func lightsChanged(value):
@@ -58,11 +58,11 @@ func lightsChanged(value):
 	Settings.maxLights = int(value)
 
 func widthChanged(value):
-	maxWidth.text = "Maximum floor width: %d" % value
+	maxWidth.text = "Floor width: %d" % value
 	Settings.maxWidth = int(value)
 
 func lengthChanged(value):
-	maxLength.text = "Maximum floor length: %d" % value
+	maxLength.text = "Floor length: %d" % value
 	Settings.maxLength = int(value)
 
 

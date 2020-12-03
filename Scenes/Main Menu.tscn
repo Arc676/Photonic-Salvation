@@ -136,7 +136,7 @@ value = 1.0
 margin_top = 41.0
 margin_right = 190.0
 margin_bottom = 55.0
-text = "Maximum floor width: 10"
+text = "Floor width: 10"
 
 [node name="Width Slider" type="HSlider" parent="Options/VBoxContainer/GridContainer"]
 margin_left = 194.0
@@ -151,7 +151,7 @@ value = 10.0
 margin_top = 61.0
 margin_right = 190.0
 margin_bottom = 75.0
-text = "Maximum floor length: 10"
+text = "Floor length: 10"
 
 [node name="Length Slider" type="HSlider" parent="Options/VBoxContainer/GridContainer"]
 margin_left = 194.0
@@ -195,7 +195,7 @@ text = "Use WASD to move around. Click on the lights to turn them on or off. Pre
 
 In the top left, the number of floors and remaining lights is shown. You'll have to find the lights yourself. The location of the stairs is marked by a green light.
 
-Your time is shown in the bottom left. To start the game, press spacebar and the time will start ticking. You won't be able to move or look around until you start the clock."
+Your time is shown in the bottom left. To start the game, press spacebar and the time will start ticking. You won't be able to move or look around until you start the clock. Once all the lights are off, return to your bed. Click on it to stop the clock and end the game."
 __meta__ = {
 "_edit_use_anchors_": false
 }
