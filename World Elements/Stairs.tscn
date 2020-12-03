@@ -15,11 +15,11 @@ light_energy = 0.3
 
 [node name="Floor" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0398049, 2.88909 )
-width = 7.57743
-depth = 11.7368
+width = 7.0
+depth = 11.0
 
 [node name="Spatial" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57466, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9771, 0, 0 )
 
 [node name="CSGBox" type="CSGBox" parent="Spatial"]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.001, 1.6, 0.011 )

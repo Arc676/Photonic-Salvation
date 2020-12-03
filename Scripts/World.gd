@@ -57,16 +57,16 @@ func _ready():
 		for _j in range(lights):
 			var newLight = lightObj.instance()
 			newLight.translate(Vector3(
-				rng.randi_range(-size.x / 2, size.x / 2),
+				rng.randi_range(-size.x, size.x) * 0.8,
 				floorHeight,
-				rng.randi_range(-size.z / 2, size.z / 2)
+				rng.randi_range(-size.z, size.z) * 0.8
 			))
 			add_child(newLight)
 
 		# Stairs
 		if i + 1 < floorCount:
 			#var side = rng.randi_range(1, 4)
-			var pos = Vector3(-size.x / 2 - 15, floorHeight, (i % 2) * 10)
+			var pos = Vector3(-size.x - 3.5, floorHeight, (i % 2) * 10)
 			var stairs = stairsObj.instance()
 			stairs.translate(pos)
 			add_child(stairs)
