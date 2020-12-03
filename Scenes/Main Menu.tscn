@@ -178,32 +178,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -211.5
-margin_top = -78.5
-margin_right = 211.5
-margin_bottom = 78.5
+margin_left = -245.0
+margin_top = -110.5
+margin_right = 245.0
+margin_bottom = 110.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Help/GridContainer"]
-margin_right = 423.0
-margin_bottom = 133.0
+margin_right = 490.0
+margin_bottom = 197.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Use WASD to move around. Click on the lights to turn them on or off. Press spacebar to toggle your flashlight.
 
 In the top left, the number of floors and remaining lights is shown. You'll have to find the lights yourself. The location of the stairs is marked by a green light.
 
-Your time is shown in the bottom left."
+Your time is shown in the bottom left. To start the game, press spacebar and the time will start ticking. You won't be able to move or look around until you start the clock."
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Back" type="Button" parent="Help/GridContainer"]
-margin_top = 137.0
-margin_right = 423.0
-margin_bottom = 157.0
+margin_top = 201.0
+margin_right = 490.0
+margin_bottom = 221.0
 text = "Back"
 [connection signal="pressed" from="Main Menu/GridContainer/New Game" to="." method="startGame"]
 [connection signal="pressed" from="Main Menu/GridContainer/Options" to="." method="showOptions"]

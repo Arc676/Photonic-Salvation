@@ -9,10 +9,27 @@ onready var head = $Head
 onready var raycast = $Head/RayCast
 onready var flashlight = $Head/SpotLight
 
+onready var timeLbl = $Control/Time
+var gameTime = 0
+var gameStarted = false
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	gameStarted = false
+	gameTime = 0
 
-func _process(_delta):
+func _process(delta):
+	if !gameStarted and Input.is_action_just_released("flashlight"):
+		gameStarted = true
+
+	if gameStarted:
+		gameTime += delta
+		var minutes = int(gameTime / 60)
+		var seconds = gameTime - minutes * 60;
+		timeLbl.text = "Time: %dm%.02fs" % [minutes, seconds]
+	else:
+		return
+
 	# Mouse movement.
 	_mouse_motion.y = clamp(_mouse_motion.y, -1550, 1550)
 	transform.basis = Basis(Vector3(0, _mouse_motion.x * -0.001, 0))
@@ -25,17 +42,13 @@ func _process(_delta):
 		raycast.get_collider().toggle()
 
 func _physics_process(delta):
-	# Keyboard movement.
 	var movement = transform.basis.xform(Vector3(
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		0,
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	).normalized() * 5)
 
-	# Gravity.
 	velocity.y -= gravity * delta
-
-	#warning-ignore:return_value_discarded
 	velocity = move_and_slide(Vector3(movement.x, velocity.y, movement.z), Vector3.UP)
 
 func _input(event):

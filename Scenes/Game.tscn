@@ -26,17 +26,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Time" type="Label" parent="UI"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = -24.0
-text = "Time: 0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Element Counters" type="GridContainer" parent="UI"]
 anchor_right = 1.0
 margin_left = 10.0
@@ -77,3 +66,21 @@ enabled = true
 collision_mask = 2
 
 [node name="SpotLight" type="SpotLight" parent="Player/Head"]
+
+[node name="Control" type="Control" parent="Player"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="Player/Control"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -24.0
+text = "Time: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
