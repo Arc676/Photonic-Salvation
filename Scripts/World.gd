@@ -32,7 +32,7 @@ func _ready():
 
 	deactivatedLights = 0
 
-	var size = Vector3(Settings.maxWidth, 1, Settings.maxLength)
+	var size = Vector3(Settings.floorWidth, 1, Settings.floorLength)
 
 	var bedpos = Vector3(
 		rng.randi_range(-size.x / 2, size.x / 2),

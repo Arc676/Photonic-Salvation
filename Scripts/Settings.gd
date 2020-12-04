@@ -2,8 +2,8 @@ extends Node
 
 var maxFloors = 1
 var maxLights = 1
-var maxWidth = 10
-var maxLength = 10
+var floorWidth = 10
+var floorLength = 10
 
 var _save_path = "user://settings.json"
 var _loaded = false
@@ -23,8 +23,8 @@ func _enter_tree():
 			var data = parse_json(file.get_line())
 			maxFloors = int(data["floors"])
 			maxLights = int(data["lights"])
-			maxWidth = int(data["width"])
-			maxLength = int(data["length"])
+			floorWidth = int(data["width"])
+			floorLength = int(data["length"])
 		file.close()
 	else:
 		save_settings()
@@ -36,8 +36,8 @@ func save_settings():
 	var data = {
 		"floors": maxFloors,
 		"lights": maxLights,
-		"width": maxWidth,
-		"length": maxLength
+		"width": floorWidth,
+		"length": floorLength
 	}
 	file.store_line(to_json(data))
 	file.close()
