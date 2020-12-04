@@ -6,6 +6,7 @@ onready var tree = get_tree()
 onready var main = $"Main Menu"
 onready var options = $Options
 onready var help = $Help
+onready var scores = $Scores
 
 # Game settings
 onready var maxFloors = $"Options/VBoxContainer/GridContainer/Max Floors"
@@ -17,6 +18,10 @@ onready var maxFloorsSlider = $"Options/VBoxContainer/GridContainer/Floor Slider
 onready var maxLightsSlider = $"Options/VBoxContainer/GridContainer/Light Slider"
 onready var floorWidthSlider = $"Options/VBoxContainer/GridContainer/Width Slider"
 onready var floorLengthSlider = $"Options/VBoxContainer/GridContainer/Length Slider"
+
+# Scoreboard
+onready var scoreboard = $Scores/Table
+var scoreRows = null
 
 func _ready():
 	maxFloorsSlider.value = Settings.maxFloors
@@ -31,6 +36,7 @@ func hideScreens():
 	main.visible = false
 	options.visible = false
 	help.visible = false
+	scores.visible = false
 
 func showHelp():
 	hideScreens()
@@ -46,6 +52,28 @@ func backToMain():
 
 func startGame():
 	tree.change_scene("res://Scenes/Game.tscn")
+
+func showScores():
+	hideScreens()
+	if scoreRows != null:
+		scoreRows.propagate_call("queue_free", [])
+	scoreRows = VBoxContainer.new()
+	for row in Scores.scores:
+		var entry = HBoxContainer.new()
+		entry.alignment = BoxContainer.ALIGN_CENTER
+		entry.add_constant_override("separation", 20)
+		var keys = ["score", "width", "length", "floors", "time", "flashlight"]
+		for i in range(6):
+			var key = keys[i]
+			var lbl = Label.new()
+			if i >= 4:
+				lbl.text = "%.02f" % row[key]
+			else:
+				lbl.text = "%d" % row[key]
+			entry.add_child(lbl)
+		scoreRows.add_child(entry)
+	scoreboard.add_child(scoreRows)
+	scores.visible = true
 
 # Change settings
 

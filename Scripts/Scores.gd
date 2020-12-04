@@ -23,18 +23,20 @@ func _enter_tree():
 		file.close()
 
 func newScore(totalTime, flashlightTime):
+	var time = totalTime + flashlightTime / 2
+	var floorArea = Settings.floorLength * Settings.floorWidth
+	var score = round(totalLights * floorArea * floorCount / time)
+
 	var scoreObj = {
 		"time" : totalTime,
 		"flashlight" : flashlightTime,
 		"width" : Settings.floorWidth,
 		"length" : Settings.floorLength,
-		"floors" : floorCount
+		"floors" : floorCount,
+		"score" : score
 	}
 	scores.append(scoreObj)
 
-	var time = totalTime + flashlightTime / 2
-	var floorArea = Settings.floorLength * Settings.floorWidth
-	var score = totalLights * floorArea * floorCount / time
 	return score
 
 func saveScores():

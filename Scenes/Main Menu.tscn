@@ -25,9 +25,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -43.5
-margin_top = -46.0
+margin_top = -58.0
 margin_right = 43.5
-margin_bottom = 46.0
+margin_bottom = 58.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -40,28 +40,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="Button" parent="Main Menu/GridContainer"]
+[node name="Button" type="Button" parent="Main Menu/GridContainer"]
 margin_top = 24.0
 margin_right = 87.0
 margin_bottom = 44.0
+text = "Scores"
+
+[node name="Options" type="Button" parent="Main Menu/GridContainer"]
+margin_top = 48.0
+margin_right = 87.0
+margin_bottom = 68.0
 text = "Options"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Help" type="Button" parent="Main Menu/GridContainer"]
-margin_top = 48.0
+margin_top = 72.0
 margin_right = 87.0
-margin_bottom = 68.0
+margin_bottom = 92.0
 text = "How to Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Quit" type="Button" parent="Main Menu/GridContainer"]
-margin_top = 72.0
+margin_top = 96.0
 margin_right = 87.0
-margin_bottom = 92.0
+margin_bottom = 116.0
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -205,7 +211,91 @@ margin_top = 201.0
 margin_right = 490.0
 margin_bottom = 221.0
 text = "Back"
+
+[node name="Scores" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Table" type="VBoxContainer" parent="Scores"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -310.0
+margin_top = -205.0
+margin_right = 310.0
+margin_bottom = 205.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Headers" type="HBoxContainer" parent="Scores/Table"]
+margin_right = 620.0
+margin_bottom = 14.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="Scores/Table/Headers"]
+margin_left = 65.0
+margin_right = 100.0
+margin_bottom = 14.0
+text = "Score"
+align = 1
+
+[node name="Label2" type="Label" parent="Scores/Table/Headers"]
+margin_left = 120.0
+margin_right = 194.0
+margin_bottom = 14.0
+text = "Floor Width"
+align = 1
+
+[node name="Label3" type="Label" parent="Scores/Table/Headers"]
+margin_left = 214.0
+margin_right = 293.0
+margin_bottom = 14.0
+text = "Floor Length"
+align = 1
+
+[node name="Label6" type="Label" parent="Scores/Table/Headers"]
+margin_left = 313.0
+margin_right = 386.0
+margin_bottom = 14.0
+text = "Floor Count"
+align = 1
+
+[node name="Label4" type="Label" parent="Scores/Table/Headers"]
+margin_left = 406.0
+margin_right = 438.0
+margin_bottom = 14.0
+text = "Time"
+align = 1
+
+[node name="Label5" type="Label" parent="Scores/Table/Headers"]
+margin_left = 458.0
+margin_right = 555.0
+margin_bottom = 14.0
+text = "Flashlight Time"
+align = 1
+
+[node name="Back" type="Button" parent="Scores"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -310.0
+margin_top = 205.0
+margin_right = 310.0
+margin_bottom = 225.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Main Menu/GridContainer/New Game" to="." method="startGame"]
+[connection signal="pressed" from="Main Menu/GridContainer/Button" to="." method="showScores"]
 [connection signal="pressed" from="Main Menu/GridContainer/Options" to="." method="showOptions"]
 [connection signal="pressed" from="Main Menu/GridContainer/Help" to="." method="showHelp"]
 [connection signal="pressed" from="Main Menu/GridContainer/Quit" to="." method="quit"]
@@ -216,3 +306,4 @@ text = "Back"
 [connection signal="pressed" from="Options/VBoxContainer/Back Button" to="." method="backToMain"]
 [connection signal="pressed" from="Options/VBoxContainer/Back Button" to="." method="saveSettings"]
 [connection signal="pressed" from="Help/GridContainer/Back" to="." method="backToMain"]
+[connection signal="pressed" from="Scores/Back" to="." method="backToMain"]
