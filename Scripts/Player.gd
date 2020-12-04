@@ -26,11 +26,6 @@ func _ready():
 	flashlightTime = 0
 	gameOverScreen.visible = false
 
-func toTimeString(time):
-	var minutes = int(time / 60)
-	var seconds = time - minutes * 60
-	return "Time: %dm%.02fs" % [minutes, seconds]
-
 func _process(delta):
 	if !gameStarted and Input.is_action_just_released("flashlight"):
 		gameStarted = true
@@ -40,8 +35,8 @@ func _process(delta):
 		gameTime += delta
 		if flashlight.visible:
 			flashlightTime += delta
-		timeLbl.text = toTimeString(gameTime)
-		flashlightTimeLbl.text = toTimeString(flashlightTime)
+		timeLbl.text = "Time: %s" % Scores.toTimeString(gameTime)
+		flashlightTimeLbl.text = "Time: %s" % Scores.toTimeString(flashlightTime)
 	else:
 		return
 

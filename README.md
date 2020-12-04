@@ -15,3 +15,5 @@ Created for [7dpfs](https://itch.io/jam/7dfps-2020) and [PROCJAM](https://itch.i
 ## License
 
 Project available under GPLv3. See `CREDITS` for asset licenses.
+
+This project uses [`godot_table`](https://github.com/sericaer/godot_table) by sericaer, available under MIT license, with a modification to the sort functions for sorting integers.

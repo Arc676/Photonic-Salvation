@@ -44,3 +44,8 @@ func saveScores():
 	file.open(_save_path, File.WRITE)
 	file.store_line(to_json(scores))
 	file.close()
+
+func toTimeString(time):
+	var minutes = int(time / 60)
+	var seconds = time - minutes * 60
+	return "%dm%.02fs" % [minutes, seconds]

@@ -9,13 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "GridContainer",
+"class": "DataContainer",
+"language": "GDScript",
+"path": "res://addons/godot_table/DataContainer.gd"
+}, {
 "base": "Spatial",
 "class": "GameWorld",
 "language": "GDScript",
 "path": "res://Scripts/World.gd"
+}, {
+"base": "GridContainer",
+"class": "HeaderContainer",
+"language": "GDScript",
+"path": "res://addons/godot_table/HeaderContainer.gd"
 } ]
 _global_script_class_icons={
-"GameWorld": ""
+"DataContainer": "",
+"GameWorld": "",
+"HeaderContainer": ""
 }
 
 [application]
@@ -28,6 +40,10 @@ config/icon="res://icon.png"
 
 Settings="*res://Scripts/Settings.gd"
 Scores="*res://Scripts/Scores.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "godot_table" )
 
 [input]
 

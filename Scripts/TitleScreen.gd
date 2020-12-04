@@ -20,8 +20,7 @@ onready var floorWidthSlider = $"Options/VBoxContainer/GridContainer/Width Slide
 onready var floorLengthSlider = $"Options/VBoxContainer/GridContainer/Length Slider"
 
 # Scoreboard
-onready var scoreboard = $Scores/Table
-var scoreRows = null
+onready var scoreboard = $Scores/Scoreboard
 
 func _ready():
 	maxFloorsSlider.value = Settings.maxFloors
@@ -55,24 +54,18 @@ func startGame():
 
 func showScores():
 	hideScreens()
-	if scoreRows != null:
-		scoreRows.propagate_call("queue_free", [])
-	scoreRows = VBoxContainer.new()
+	var entries = []
 	for row in Scores.scores:
-		var entry = HBoxContainer.new()
-		entry.alignment = BoxContainer.ALIGN_CENTER
-		entry.add_constant_override("separation", 90)
+		var entry = []
 		var keys = ["score", "width", "length", "floors", "time", "flashlight"]
 		for i in range(6):
 			var key = keys[i]
-			var lbl = Label.new()
 			if i >= 4:
-				lbl.text = "%.02f" % row[key]
+				entry.append(Scores.toTimeString(row[key]))
 			else:
-				lbl.text = "%d" % row[key]
-			entry.add_child(lbl)
-		scoreRows.add_child(entry)
-	scoreboard.add_child(scoreRows)
+				entry.append(int(row[key]))
+		entries.append(entry)
+	scoreboard.set_rows(entries)
 	scores.visible = true
 
 # Change settings
