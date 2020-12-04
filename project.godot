@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Settings="*res://Scripts/Settings.gd"
+Scores="*res://Scripts/Scores.gd"
 
 [input]
 

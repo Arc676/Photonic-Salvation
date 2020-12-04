@@ -13,5 +13,6 @@ func _process(_delta):
 		)
 
 func backToMain():
+	Scores.saveScores()
 	tree.paused = false
 	tree.change_scene("res://Scenes/Main Menu.tscn")

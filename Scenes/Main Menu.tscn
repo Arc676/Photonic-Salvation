@@ -162,7 +162,7 @@ min_value = 10.0
 max_value = 200.0
 value = 10.0
 
-[node name="Button" type="Button" parent="Options/VBoxContainer"]
+[node name="Back Button" type="Button" parent="Options/VBoxContainer"]
 margin_top = 98.0
 margin_right = 306.0
 margin_bottom = 118.0
@@ -213,6 +213,6 @@ text = "Back"
 [connection signal="value_changed" from="Options/VBoxContainer/GridContainer/Light Slider" to="." method="lightsChanged"]
 [connection signal="value_changed" from="Options/VBoxContainer/GridContainer/Width Slider" to="." method="widthChanged"]
 [connection signal="value_changed" from="Options/VBoxContainer/GridContainer/Length Slider" to="." method="lengthChanged"]
-[connection signal="pressed" from="Options/VBoxContainer/Button" to="." method="backToMain"]
-[connection signal="pressed" from="Options/VBoxContainer/Button" to="." method="saveSettings"]
+[connection signal="pressed" from="Options/VBoxContainer/Back Button" to="." method="backToMain"]
+[connection signal="pressed" from="Options/VBoxContainer/Back Button" to="." method="saveSettings"]
 [connection signal="pressed" from="Help/GridContainer/Back" to="." method="backToMain"]

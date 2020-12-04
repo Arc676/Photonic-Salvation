@@ -13,15 +13,23 @@ onready var lightcast = $"Head/Light Raycast"
 onready var bedcast = $"Head/Bed Raycast"
 onready var flashlight = $Head/SpotLight
 
-onready var timeLbl = $"Time UI/Time"
+onready var timeLbl = $"Time UI/GridContainer/Time"
+onready var flashlightTimeLbl = $"Time UI/GridContainer/Flashlight Time"
 var gameTime = 0
+var flashlightTime = 0
 var gameStarted = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	gameStarted = false
 	gameTime = 0
+	flashlightTime = 0
 	gameOverScreen.visible = false
+
+func toTimeString(time):
+	var minutes = int(time / 60)
+	var seconds = time - minutes * 60
+	return "Time: %dm%.02fs" % [minutes, seconds]
 
 func _process(delta):
 	if !gameStarted and Input.is_action_just_released("flashlight"):
@@ -30,9 +38,10 @@ func _process(delta):
 
 	if gameStarted:
 		gameTime += delta
-		var minutes = int(gameTime / 60)
-		var seconds = gameTime - minutes * 60;
-		timeLbl.text = "Time: %dm%.02fs" % [minutes, seconds]
+		if flashlight.visible:
+			flashlightTime += delta
+		timeLbl.text = toTimeString(gameTime)
+		flashlightTimeLbl.text = toTimeString(flashlightTime)
 	else:
 		return
 
@@ -71,4 +80,6 @@ func _input(event):
 
 func gameOver():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	var score = Scores.newScore(gameTime, flashlightTime)
+	scoreLbl.text = "Score: %d" % score
 	gameOverScreen.visible = true

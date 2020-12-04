@@ -65,6 +65,5 @@ func lengthChanged(value):
 	floorLength.text = "Floor length: %d" % value
 	Settings.floorLength = int(value)
 
-
 func saveSettings():
 	Settings.save_settings()

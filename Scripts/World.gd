@@ -87,6 +87,9 @@ func _ready():
 	floorLbl.text = "Floors: %d" % floorCount
 	lightsLbl.text = "Lights: 0/%d" % lightCount
 
+	Scores.floorCount = floorCount
+	Scores.totalLights = lightCount
+
 func foundLight(delta):
 	deactivatedLights += delta
 	lightsLbl.text = "Lights: %d/%d" % [deactivatedLights, lightCount]
