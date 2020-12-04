@@ -62,25 +62,25 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.648447, 0 )
 [node name="Camera" type="Camera" parent="Player/Head"]
 
 [node name="Light Raycast" type="RayCast" parent="Player/Head"]
-transform = Transform( 1, 0, 0, 0, -1.09278e-07, -1, 0, 2.5, -4.37114e-08, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, -1.74846e-07, -1, 0, 4, -4.37114e-08, 0, 0, 0 )
 enabled = true
 collision_mask = 2
 
 [node name="Bed Raycast" type="RayCast" parent="Player/Head"]
-transform = Transform( 1, 0, 0, 0, -1.09278e-07, -1, 0, 2.5, -4.37114e-08, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, -1.74846e-07, -1, 0, 4, -4.37114e-08, 0, 0, 0 )
 enabled = true
 collision_mask = 4
 
 [node name="SpotLight" type="SpotLight" parent="Player/Head"]
 
-[node name="Control" type="Control" parent="Player"]
+[node name="Time UI" type="Control" parent="Player"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Time" type="Label" parent="Player/Control"]
+[node name="Time" type="Label" parent="Player/Time UI"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -90,6 +90,62 @@ text = "Time: 0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Game Over" type="Control" parent="Player"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -212.0
+margin_top = -163.0
+margin_right = 212.0
+margin_bottom = 163.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Player/Game Over"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Player/Game Over"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -47.0
+margin_top = -20.0
+margin_right = 47.0
+text = "Back to Main"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Player/Game Over"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -29.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Player/Game Over/GridContainer"]
+margin_right = 51.0
+expand = true
+
+[node name="Score" type="Label" parent="Player/Game Over/GridContainer"]
+margin_top = 4.0
+margin_right = 51.0
+margin_bottom = 18.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Score: 0"
 
 [node name="Pause Menu" type="Control" parent="."]
 pause_mode = 2
@@ -111,4 +167,5 @@ margin_top = -10.0
 margin_right = 47.0
 margin_bottom = 10.0
 text = "Back to Main"
+[connection signal="pressed" from="Player/Game Over/Button" to="Pause Menu" method="backToMain"]
 [connection signal="pressed" from="Pause Menu/Button" to="Pause Menu" method="backToMain"]
