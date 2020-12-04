@@ -201,7 +201,9 @@ text = "Use WASD to move around. Click on the lights to turn them on or off. Pre
 
 In the top left, the number of floors and remaining lights is shown. You'll have to find the lights yourself. The location of the stairs is marked by a green light.
 
-Your time is shown in the bottom left. To start the game, press spacebar and the time will start ticking. You won't be able to move or look around until you start the clock. Once all the lights are off, return to your bed. Click on it to stop the clock and end the game."
+Your time is shown in the bottom left. To start the game, press spacebar and the time will start ticking. You won't be able to move or look around until you start the clock. Once all the lights are off, return to your bed. Click on it to stop the clock and end the game.
+
+Try to turn off all the lights and return to your bed in as little time as possible. Time spent with your flashlight on counts against your final score. Your score scales with the number of lights and floors as well as the floor size."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -236,47 +238,47 @@ __meta__ = {
 [node name="Headers" type="HBoxContainer" parent="Scores/Table"]
 margin_right = 620.0
 margin_bottom = 14.0
-custom_constants/separation = 20
+custom_constants/separation = 30
 alignment = 1
 
 [node name="Label" type="Label" parent="Scores/Table/Headers"]
-margin_left = 65.0
-margin_right = 100.0
+margin_left = 19.0
+margin_right = 54.0
 margin_bottom = 14.0
 text = "Score"
 align = 1
 
 [node name="Label2" type="Label" parent="Scores/Table/Headers"]
-margin_left = 120.0
-margin_right = 194.0
+margin_left = 84.0
+margin_right = 158.0
 margin_bottom = 14.0
 text = "Floor Width"
 align = 1
 
 [node name="Label3" type="Label" parent="Scores/Table/Headers"]
-margin_left = 214.0
-margin_right = 293.0
+margin_left = 188.0
+margin_right = 267.0
 margin_bottom = 14.0
 text = "Floor Length"
 align = 1
 
 [node name="Label6" type="Label" parent="Scores/Table/Headers"]
-margin_left = 313.0
-margin_right = 386.0
+margin_left = 297.0
+margin_right = 370.0
 margin_bottom = 14.0
 text = "Floor Count"
 align = 1
 
 [node name="Label4" type="Label" parent="Scores/Table/Headers"]
-margin_left = 406.0
-margin_right = 438.0
+margin_left = 400.0
+margin_right = 474.0
 margin_bottom = 14.0
-text = "Time"
+text = "Game Time"
 align = 1
 
 [node name="Label5" type="Label" parent="Scores/Table/Headers"]
-margin_left = 458.0
-margin_right = 555.0
+margin_left = 504.0
+margin_right = 601.0
 margin_bottom = 14.0
 text = "Flashlight Time"
 align = 1

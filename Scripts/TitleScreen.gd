@@ -61,7 +61,7 @@ func showScores():
 	for row in Scores.scores:
 		var entry = HBoxContainer.new()
 		entry.alignment = BoxContainer.ALIGN_CENTER
-		entry.add_constant_override("separation", 20)
+		entry.add_constant_override("separation", 90)
 		var keys = ["score", "width", "length", "floors", "time", "flashlight"]
 		for i in range(6):
 			var key = keys[i]
