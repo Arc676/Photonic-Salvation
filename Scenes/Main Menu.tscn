@@ -185,17 +185,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -245.0
-margin_top = -110.5
-margin_right = 245.0
-margin_bottom = 110.5
+margin_left = -265.5
+margin_top = -144.0
+margin_right = 265.5
+margin_bottom = 144.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Help/GridContainer"]
-margin_right = 490.0
-margin_bottom = 197.0
+margin_right = 531.0
+margin_bottom = 264.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Use WASD to move around. Click on the lights to turn them on or off. Press spacebar to toggle your flashlight.
@@ -210,9 +210,9 @@ __meta__ = {
 }
 
 [node name="Back" type="Button" parent="Help/GridContainer"]
-margin_top = 201.0
-margin_right = 490.0
-margin_bottom = 221.0
+margin_top = 268.0
+margin_right = 531.0
+margin_bottom = 288.0
 text = "Back"
 
 [node name="Scores" type="Control" parent="."]

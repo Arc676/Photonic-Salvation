@@ -49,25 +49,32 @@ class MyCustomSorter:
 	var sort_index = -1
 	var sort_state = -1
 
+	var regex = RegEx.new()
+
+	func _init():
+		regex.compile("(\\d+)m([0-9.]+)s")
+
 	func sort(a, b):
 		if sort_state == 1:
 			return sort_ascending(a, b)
 		if sort_state == 0:
 			return sort_descending(a, b)
 
+	func toNumericalTimes(a, b):
+		var resA = regex.search(a)
+		var timeA = int(resA.get_string(1)) * 60 + float(resA.get_string(2))
+		var resB = regex.search(b)
+		var timeB = int(resB.get_string(1)) * 60 + float(resB.get_string(2))
+		return [timeA, timeB]
+
 	func sort_ascending(a, b):
-		if a[sort_index] is int:
-			return a[sort_index] < b[sort_index]
-		if a[sort_index] == '--':
-			return false
-		if a[sort_index] < b[sort_index]:
-			return true
-		return false
+		if a[sort_index] is String:
+			var times = toNumericalTimes(a[sort_index], b[sort_index])
+			return times[0] < times[1]
+		return a[sort_index] < b[sort_index]
+
 	func sort_descending(a, b):
-		if a[sort_index] is int:
-			return a[sort_index] > b[sort_index]
-		if a[sort_index] == '--':
-			return false
-		if a[sort_index] > b[sort_index]:
-			return true
-		return false
+		if a[sort_index] is String:
+			var times = toNumericalTimes(a[sort_index], b[sort_index])
+			return times[0] > times[1]
+		return a[sort_index] > b[sort_index]
