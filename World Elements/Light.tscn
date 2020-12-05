@@ -19,6 +19,8 @@ shape = SubResource( 1 )
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85602, 0 )
 light_color = Color( 1, 0.976471, 0.6, 1 )
+shadow_enabled = true
 
 [node name="CSGMesh" type="CSGMesh" parent="."]
+cast_shadow = 0
 mesh = ExtResource( 2 )
