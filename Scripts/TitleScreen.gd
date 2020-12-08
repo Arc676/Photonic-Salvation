@@ -57,10 +57,10 @@ func showScores():
 	var entries = []
 	for row in Scores.scores:
 		var entry = []
-		var keys = ["score", "width", "length", "floors", "time", "flashlight"]
-		for i in range(6):
+		var keys = ["score", "width", "length", "floors", "lights", "time", "flashlight"]
+		for i in range(7):
 			var key = keys[i]
-			if i >= 4:
+			if i >= 5:
 				entry.append(Scores.toTimeString(row[key]))
 			else:
 				entry.append(int(row[key]))

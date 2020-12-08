@@ -33,6 +33,7 @@ func newScore(totalTime, flashlightTime):
 		"width" : Settings.floorWidth,
 		"length" : Settings.floorLength,
 		"floors" : floorCount,
+		"lights" : totalLights,
 		"score" : score
 	}
 	scores.append(scoreObj)
