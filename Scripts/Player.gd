@@ -26,6 +26,7 @@ onready var head = $Head
 onready var lightcast = $"Head/Light Raycast"
 onready var bedcast = $"Head/Bed Raycast"
 onready var flashlight = $Head/SpotLight
+onready var footsteps = $Footsteps
 
 onready var timeLbl = $"Time UI/GridContainer/Time"
 onready var flashlightTimeLbl = $"Time UI/GridContainer/Flashlight Time"
@@ -78,6 +79,12 @@ func _physics_process(delta):
 		0,
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	).normalized() * 5)
+
+	if movement.length() > 0:
+		if !footsteps.playing:
+			footsteps.play()
+	else:
+		footsteps.stop()
 
 	velocity.y -= gravity * delta
 	velocity = move_and_slide(Vector3(movement.x, velocity.y, movement.z), Vector3.UP)
