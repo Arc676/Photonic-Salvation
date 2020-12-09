@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Light.gd" type="Script" id=1]
 [ext_resource path="res://OBJ/Light.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Sounds/switch.wav" type="AudioStream" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 1.18119, 1 )
@@ -24,3 +25,8 @@ shadow_enabled = true
 [node name="CSGMesh" type="CSGMesh" parent="."]
 cast_shadow = 0
 mesh = ExtResource( 2 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+attenuation_model = 3
+max_db = 6.0

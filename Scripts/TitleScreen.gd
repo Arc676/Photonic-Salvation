@@ -7,6 +7,7 @@ onready var main = $"Main Menu"
 onready var options = $Options
 onready var help = $Help
 onready var scores = $Scores
+onready var credits = $Credits
 
 # Game settings
 onready var maxFloors = $"Options/VBoxContainer/GridContainer/Max Floors"
@@ -36,10 +37,15 @@ func hideScreens():
 	options.visible = false
 	help.visible = false
 	scores.visible = false
+	credits.visible = false
 
 func showHelp():
 	hideScreens()
 	help.visible = true
+
+func showCredits():
+	hideScreens()
+	credits.visible = true
 
 func showOptions():
 	hideScreens()
