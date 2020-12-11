@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://OBJ/Material_002.material" type="Material" id=1]
+[ext_resource path="res://OBJ/Material.material" type="Material" id=2]
+[ext_resource path="res://OBJ/Material_003.material" type="Material" id=3]
+[ext_resource path="res://OBJ/Lamp.glb" type="PackedScene" id=4]
+[ext_resource path="res://OBJ/Material_001.material" type="Material" id=5]
+[ext_resource path="res://OBJ/Material_004.material" type="Material" id=6]
+
+[node name="Lamp" instance=ExtResource( 4 )]
+
+[node name="Cube002" parent="." index="0"]
+material/0 = ExtResource( 1 )
+
+[node name="Cube001" parent="." index="1"]
+material/0 = ExtResource( 5 )
+
+[node name="Cylinder" parent="." index="2"]
+material/0 = ExtResource( 6 )
+
+[node name="Cube" parent="." index="3"]
+material/0 = ExtResource( 2 )
+
+[node name="Cube003" parent="." index="4"]
+material/0 = ExtResource( 3 )
