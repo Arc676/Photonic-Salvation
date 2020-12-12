@@ -61,6 +61,7 @@ shape = SubResource( 3 )
 
 [node name="Footsteps" type="AudioStreamPlayer3D" parent="Player"]
 stream = ExtResource( 4 )
+bus = "SFX"
 
 [node name="Head" type="Spatial" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.648447, 0 )
@@ -192,6 +193,7 @@ text = "Back to Main"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+bus = "Music"
 script = ExtResource( 6 )
 [connection signal="pressed" from="Player/Game Over/End Game" to="Pause Menu" method="backToMain"]
 [connection signal="pressed" from="Pause Menu/Exit Game" to="Pause Menu" method="backToMain"]

@@ -18,6 +18,8 @@ var maxFloors = 1
 var maxLights = 1
 var floorWidth = 10
 var floorLength = 10
+var sfxMute = false
+var musicMute = false
 
 var _save_path = "user://settings.json"
 var _loaded = false
@@ -39,6 +41,8 @@ func _enter_tree():
 			maxLights = int(data["lights"])
 			floorWidth = int(data["width"])
 			floorLength = int(data["length"])
+			sfxMute = bool(data["noSFX"])
+			musicMute = bool(data["noMusic"])
 		file.close()
 	else:
 		save_settings()
@@ -51,7 +55,9 @@ func save_settings():
 		"floors": maxFloors,
 		"lights": maxLights,
 		"width": floorWidth,
-		"length": floorLength
+		"length": floorLength,
+		"noSFX": sfxMute,
+		"noMusic": musicMute
 	}
 	file.store_line(to_json(data))
 	file.close()

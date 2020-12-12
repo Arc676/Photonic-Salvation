@@ -26,6 +26,7 @@ shadow_enabled = true
 stream = ExtResource( 3 )
 attenuation_model = 3
 max_db = 6.0
+bus = "SFX"
 
 [node name="Lamp" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.45, 0 )

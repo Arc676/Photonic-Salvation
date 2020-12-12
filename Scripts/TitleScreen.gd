@@ -34,6 +34,9 @@ onready var maxLightsSlider = $"Options/VBoxContainer/GridContainer/Light Slider
 onready var floorWidthSlider = $"Options/VBoxContainer/GridContainer/Width Slider"
 onready var floorLengthSlider = $"Options/VBoxContainer/GridContainer/Length Slider"
 
+onready var musicMute = $Options/VBoxContainer/Music
+onready var sfxMute = $Options/VBoxContainer/SFX
+
 # Scoreboard
 onready var scoreboard = $Scores/Scoreboard
 
@@ -42,6 +45,8 @@ func _ready():
 	maxLightsSlider.value = Settings.maxLights
 	floorWidthSlider.value = Settings.floorWidth
 	floorLengthSlider.value = Settings.floorLength
+	musicMute.pressed = !Settings.musicMute
+	sfxMute.pressed = !Settings.sfxMute
 
 func quit():
 	tree.quit()
@@ -108,3 +113,11 @@ func lengthChanged(value):
 
 func saveSettings():
 	Settings.save_settings()
+
+func toggleSFX():
+	Settings.sfxMute = !sfxMute.pressed
+	AudioServer.set_bus_mute(2, Settings.sfxMute)
+
+func toggleMusic():
+	Settings.musicMute = !musicMute.pressed
+	AudioServer.set_bus_mute(1, Settings.musicMute)

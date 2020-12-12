@@ -46,8 +46,7 @@ func _ready():
 func _process(delta):
 	if !gameStarted and Input.is_action_just_released("flashlight"):
 		gameStarted = true
-		if true:
-			music.play()
+		music.play()
 		return
 
 	if gameStarted:
