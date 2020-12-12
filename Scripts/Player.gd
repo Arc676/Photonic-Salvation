@@ -34,6 +34,8 @@ var gameTime = 0
 var flashlightTime = 0
 var gameStarted = false
 
+onready var music = $"../Music"
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	gameStarted = false
@@ -44,6 +46,8 @@ func _ready():
 func _process(delta):
 	if !gameStarted and Input.is_action_just_released("flashlight"):
 		gameStarted = true
+		if true:
+			music.play()
 		return
 
 	if gameStarted:
@@ -99,3 +103,4 @@ func gameOver():
 	var score = Scores.newScore(gameTime, flashlightTime)
 	scoreLbl.text = "Score: %d" % score
 	gameOverScreen.visible = true
+	music.stop()
