@@ -223,7 +223,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Use WASD to move around. Click on the lights to turn them on or off. Press spacebar to toggle your flashlight.
 
-In the top left, the number of floors and remaining lights is shown. You'll have to find the lights yourself. The location of the stairs is marked by a green light.
+In the top left, the number of floors and remaining lights across all floors is shown. You'll have to find the lights yourself. The location of the stairs is marked by a green light. But be careful! If all the lights on a certain floor are turned off, the light on the stairs leading to the next floor up (if there is one) will be turned off. Any stairs leading down will still be illuminated as long as the floor beneath you still has any lights on.
 
 Your time is shown in the bottom left. To start the game, press spacebar and the time will start ticking. You won't be able to move or look around until you start the clock. Once all the lights are off, return to your bed. Click on it to stop the clock and end the game.
 

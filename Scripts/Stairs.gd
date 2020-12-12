@@ -12,17 +12,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-extends StaticBody
+extends Spatial
 
 onready var light = $OmniLight
-onready var sound = $AudioStreamPlayer3D
 
-onready var world = get_parent()
-
-var floorNum
-
-func toggle():
-	light.visible = !light.visible
-	world.foundLight(-1 if light.visible else 1, floorNum)
-	sound.play()
-	return light.visible
+func setLight(enabled):
+	light.visible = enabled

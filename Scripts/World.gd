@@ -32,6 +32,9 @@ var bedFloor = 0
 var floorCount = 0
 var lightCount = 0
 
+var lights = []
+var stairs = []
+
 var bed = null
 var deactivatedLights = 0
 
@@ -43,6 +46,9 @@ func _ready():
 	floorCount = rng.randi_range(1, Settings.maxFloors)
 	bedFloor = rng.randi_range(0, floorCount - 1)
 	lightCount = 0
+
+	lights.clear()
+	stairs.clear()
 
 	deactivatedLights = 0
 
@@ -60,18 +66,19 @@ func _ready():
 
 	var stairSide = 0
 
-	for i in range(floorCount):
+	for floorNum in range(floorCount):
 		# Floor
-		var floorHeight = i * FLOOR_HEIGHT
+		var floorHeight = floorNum * FLOOR_HEIGHT
 		var newFloor = floorObj.instance()
 		newFloor.translate(Vector3(0, floorHeight, 0))
 		newFloor.scale = size
 		add_child(newFloor)
 
 		# Lights
-		var lights = rng.randi_range(1, Settings.maxLights)
-		lightCount += lights
-		for _j in range(lights):
+		var floorLights = rng.randi_range(1, Settings.maxLights)
+		lightCount += floorLights
+		lights.append(floorLights)
+		for _j in range(floorLights):
 			var newLight = lightObj.instance()
 			newLight.translate(Vector3(
 				rng.randi_range(-size.x, size.x) * 0.8,
@@ -79,10 +86,11 @@ func _ready():
 				rng.randi_range(-size.z, size.z) * 0.8
 			))
 			add_child(newLight)
+			newLight.floorNum = floorNum
 
 		# Stairs
-		if i + 1 < floorCount:
-			if i == 0:
+		if floorNum + 1 < floorCount:
+			if floorNum == 0:
 				stairSide = rng.randi_range(0, 3)
 			else:
 				var newSide = rng.randi_range(0, 2)
@@ -95,16 +103,20 @@ func _ready():
 							-(size.x if stairSide % 2 == 0 else size.z) - 3.5,
 							floorHeight, 0
 						))
-			var stairs = stairsObj.instance()
-			stairs.transform = trsf
-			add_child(stairs)
+			var newStairs = stairsObj.instance()
+			newStairs.transform = trsf
+			add_child(newStairs)
+			stairs.append(newStairs)
 	floorLbl.text = "Floors: %d" % floorCount
 	lightsLbl.text = "Lights: 0/%d" % lightCount
 
 	Scores.floorCount = floorCount
 	Scores.totalLights = lightCount
 
-func foundLight(delta):
+func foundLight(delta, floorNum):
 	deactivatedLights += delta
 	lightsLbl.text = "Lights: %d/%d" % [deactivatedLights, lightCount]
 	bed.setUsable(deactivatedLights == lightCount)
+	lights[floorNum] -= delta
+	if floorNum + 1 < floorCount:
+		stairs[floorNum].setLight(lights[floorNum] != 0)
