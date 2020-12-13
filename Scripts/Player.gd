@@ -17,6 +17,9 @@ extends KinematicBody
 var velocity = Vector3()
 var _mouse_motion = Vector2()
 
+var bedPos
+var resetMsg = preload("res://World Elements/Reset Message.tscn")
+
 onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 onready var gameOverScreen = $"Game Over"
@@ -47,6 +50,7 @@ func _process(delta):
 	if !gameStarted and Input.is_action_just_released("flashlight"):
 		gameStarted = true
 		music.play()
+		bedPos = self.translation
 		return
 
 	if gameStarted:
@@ -62,6 +66,11 @@ func _process(delta):
 	_mouse_motion.y = clamp(_mouse_motion.y, -1550, 1550)
 	transform.basis = Basis(Vector3(0, _mouse_motion.x * -0.001, 0))
 	head.transform.basis = Basis(Vector3(_mouse_motion.y * -0.001, 0, 0))
+
+	if self.translation.y < 0:
+		add_child(resetMsg.instance())
+		gameTime += 5
+		self.translation = bedPos
 
 	if Input.is_action_just_released("flashlight"):
 		flashlight.visible = !flashlight.visible
