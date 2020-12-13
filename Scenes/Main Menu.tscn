@@ -208,24 +208,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -265.5
-margin_top = -144.0
-margin_right = 265.5
-margin_bottom = 144.0
+margin_left = -279.0
+margin_top = -158.5
+margin_right = 279.0
+margin_bottom = 158.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Help/GridContainer"]
-margin_right = 531.0
-margin_bottom = 264.0
+margin_right = 558.0
+margin_bottom = 293.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Use WASD to move around. Click on the lights to turn them on or off. Press spacebar to toggle your flashlight.
 
 In the top left, the number of floors and remaining lights across all floors is shown. You'll have to find the lights yourself. The location of the stairs is marked by a green light. But be careful! If all the lights on a certain floor are turned off, the light on the stairs leading to the next floor up (if there is one) will be turned off. Any stairs leading down will still be illuminated as long as the floor beneath you still has any lights on.
 
-Your time is shown in the bottom left. To start the game, press spacebar and the time will start ticking. You won't be able to move or look around until you start the clock. Once all the lights are off, return to your bed. Click on it to stop the clock and end the game.
+Your time is shown in the bottom left. To start the game, press spacebar and the time will start ticking. You won't be able to move or look around until you start the clock. Once all the lights are off, return to your bed. Click on it to stop the clock and end the game. If you fall out of the world, you will be returned to your bed and a penalty of 5 seconds will be added to your time.
 
 Try to turn off all the lights and return to your bed in as little time as possible. Time spent with your flashlight on counts against your final score. Your score scales with the number of lights and floors as well as the floor size."
 __meta__ = {
@@ -233,9 +233,9 @@ __meta__ = {
 }
 
 [node name="Back" type="Button" parent="Help/GridContainer"]
-margin_top = 268.0
-margin_right = 531.0
-margin_bottom = 288.0
+margin_top = 297.0
+margin_right = 558.0
+margin_bottom = 317.0
 text = "Back"
 
 [node name="Scores" type="Control" parent="."]
@@ -295,6 +295,8 @@ Light switch sound: joedeshon (CC BY 3.0)
 Lamp model: wobba89 (CC BY 3.0)
 Music: DRFX (CC0)
 Footsteps sound: deleted_user_5093904 (CC BY 3.0)
+Game over: Jay Mayu (CC0)
+Floor and stairs texture: GIMP presets
 Other assets: Arc676/Alessandro Vinciguerra (CC BY-NC-SA 4.0)
 
 See CREDITS file for more info."
