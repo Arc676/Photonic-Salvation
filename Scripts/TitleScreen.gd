@@ -47,6 +47,8 @@ func _ready():
 	floorLengthSlider.value = Settings.floorLength
 	musicMute.pressed = !Settings.musicMute
 	sfxMute.pressed = !Settings.sfxMute
+	AudioServer.set_bus_mute(1, Settings.musicMute)
+	AudioServer.set_bus_mute(2, Settings.sfxMute)
 
 func quit():
 	tree.quit()

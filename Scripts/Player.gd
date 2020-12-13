@@ -23,7 +23,7 @@ var resetMsg = preload("res://World Elements/Reset Message.tscn")
 onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 onready var gameOverScreen = $"Game Over"
-onready var scoreLbl = $"Game Over/GridContainer/Score"
+onready var scoreLbl = $"Game Over/Score"
 
 onready var head = $Head
 onready var lightcast = $"Head/Light Raycast"
