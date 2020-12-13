@@ -127,7 +127,7 @@ margin_right = 304.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 110, 0 )
 min_value = 1.0
-max_value = 20.0
+max_value = 10.0
 value = 1.0
 
 [node name="Max Lights" type="Label" parent="Options/VBoxContainer/GridContainer"]
@@ -142,7 +142,7 @@ margin_top = 20.0
 margin_right = 304.0
 margin_bottom = 36.0
 min_value = 1.0
-max_value = 20.0
+max_value = 10.0
 value = 1.0
 
 [node name="Max Width" type="Label" parent="Options/VBoxContainer/GridContainer"]
@@ -157,7 +157,7 @@ margin_top = 40.0
 margin_right = 304.0
 margin_bottom = 56.0
 min_value = 10.0
-max_value = 200.0
+max_value = 70.0
 value = 10.0
 
 [node name="Max Length" type="Label" parent="Options/VBoxContainer/GridContainer"]
@@ -172,7 +172,7 @@ margin_top = 60.0
 margin_right = 304.0
 margin_bottom = 76.0
 min_value = 10.0
-max_value = 200.0
+max_value = 70.0
 value = 10.0
 
 [node name="Music" type="CheckBox" parent="Options/VBoxContainer"]
