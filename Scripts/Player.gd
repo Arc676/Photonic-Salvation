@@ -58,7 +58,7 @@ func _process(delta):
 		if flashlight.visible:
 			flashlightTime += delta
 		timeLbl.text = "Time: %s" % Scores.toTimeString(gameTime)
-		flashlightTimeLbl.text = "Time: %s" % Scores.toTimeString(flashlightTime)
+		flashlightTimeLbl.text = "Flashlight Time: %s" % Scores.toTimeString(flashlightTime)
 	else:
 		return
 
